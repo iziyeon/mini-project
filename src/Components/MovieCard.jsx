@@ -17,14 +17,14 @@ function MovieCard() {
         <div
           className="grid-container"
           key={i}
-          onClick={() => navigate(`/detail`)}
+          onClick={() => navigate(`/detail/${movie.id}`)}
         >
           <img
             className="poster"
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.original_title}
+            alt={movie.title}
           />
-          <div className="poster_title">{movie.original_title}</div>
+          <div className="poster_title">{movie.title}</div>
           <div className="poster_grade">평점: {movie.vote_average.toFixed(1)}</div>
         </div>
       ))}

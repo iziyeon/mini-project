@@ -8,6 +8,12 @@ function MovieDetail() {
   useEffect(() => {
     setMovieDetail(movieDetailData);
   }, []);
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   const movie = movieDetailData.find((movie) => (movie.id.toString() === id));
+  //   setMovieDetail(movie);
+  // }, [id]);
 
   if (!movieDetail) {
     return <div>Loading...</div>;
