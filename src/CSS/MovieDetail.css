@@ -3,6 +3,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.movie_card_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  filter: blur(10px);
+  opacity: 0.5;
+}
+
+.movie_detail_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 
 .movie_detail_container {
@@ -13,6 +39,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 3;
 }
 
 .movie_detail_container:hover {
@@ -25,11 +52,15 @@ body {
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-      "poster title vote"
-      "poster genres genres"
-      "poster overview overview";
+    "poster title vote"
+    "poster genres genres"
+    "poster overview overview";
   grid-gap: 40px;
   align-items: start;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
 }
 
 .poster {
@@ -50,7 +81,7 @@ body {
 
 .title {
   grid-area: title;
-  font-size: 2.6rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 10px;
@@ -59,7 +90,6 @@ body {
 .vote_average {
   grid-area: vote;
   font-size: 1.6rem;
-  background-color: #f39c12;
   padding: 5px 10px;
   border-radius: 12px;
   color: #ffffff;
@@ -69,7 +99,7 @@ body {
 
 .genres {
   grid-area: genres;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #b0b0b0;
 }
 
@@ -82,7 +112,7 @@ body {
 
 .overview {
   grid-area: overview;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.8;
   background-color: rgba(240, 240, 240, 0.1);
   padding: 30px;
@@ -94,80 +124,80 @@ body {
 
 @media (max-width: 1024px) {
   .movie_grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-          "poster title"
-          "poster vote"
-          "genres genres"
-          "overview overview";
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "poster title"
+      "poster vote"
+      "genres genres"
+      "overview overview";
   }
 
   .title {
-      font-size: 2.4rem;
+    font-size: 2.4rem;
   }
 
   .vote_average {
-      font-size: 1.4rem;
+    font-size: 1.4rem;
   }
 
   .genres {
-      font-size: 1.1rem;
+    font-size: 1.1rem;
   }
 
   .overview {
-      font-size: 1.1rem;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 768px) {
   .movie_grid {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-          "poster"
-          "title"
-          "vote"
-          "genres"
-          "overview";
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "poster"
+      "title"
+      "vote"
+      "genres"
+      "overview";
   }
 
   .poster img {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .title {
-      font-size: 2rem;
-      text-align: center;
+    font-size: 2rem;
+    text-align: center;
   }
 
   .vote_average {
-      text-align: center;
-      font-size: 1.3rem;
+    text-align: center;
+    font-size: 1.3rem;
   }
 
   .genres {
-      text-align: center;
+    text-align: center;
   }
 
   .overview {
-      font-size: 1rem;
-      max-width: 100%;
+    font-size: 1rem;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-      font-size: 1.8rem;
+    font-size: 1.8rem;
   }
 
   .vote_average {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .genres {
-      font-size: 1.0rem;
+    font-size: 1.0rem;
   }
 
   .overview {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 }
