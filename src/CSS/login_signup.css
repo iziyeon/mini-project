@@ -1,18 +1,10 @@
-body {
-  padding-top: 80px;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #000000;
-  color: white;
-}
-
 .signup-container, .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #000000;
+  background-color: black;
 }
 
 .signup-form, .login-form {
@@ -48,7 +40,7 @@ body {
 .signup-form button, .login-form button {
   padding: 12px;
   background-color: #ffffff;
-  color: #000000;
+  color: black;
   border: none;
   border-radius: 30px;
   cursor: pointer;

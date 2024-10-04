@@ -1,14 +1,6 @@
-body {
-    padding-top: 80px;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #000000;
-    color: white;
-}
-
 .navbar {
     width: 90%;
-    background-color: #000000;
+    background-color: black;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
