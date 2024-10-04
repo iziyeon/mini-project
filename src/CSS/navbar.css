@@ -17,8 +17,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .navbar-logo a {
@@ -28,7 +27,6 @@ body {
     text-decoration: none;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: color 0.3s ease;
 }
 
 .navbar-logo a:hover {
@@ -48,7 +46,6 @@ body {
     text-decoration: none;
     padding: 12px 20px;
     color: #ffffff;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar-buttons a:hover {
@@ -56,7 +53,3 @@ body {
     transform: translateY(-3px);
 }
 
-.navbar.scrolled {
-    background-color: #000000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
