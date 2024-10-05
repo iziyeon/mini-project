@@ -7,7 +7,7 @@ function MovieDetail() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchMovieDetail = async () => {
       const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
