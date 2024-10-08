@@ -25,6 +25,28 @@ export default function Login() {
         }
     };
 
+    // Google OAuth 로그인을 처리하는 함수 추가
+    const handleOAuthLogin = async () => {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                queryParams: {
+                    access_type: 'offline',
+                    prompt: 'consent',
+                },
+            },
+        });
+
+        if (data) {
+            alert("로그인 되었습니다!");
+            navigate("/");
+        }
+        if (error) {
+            console.log("error: ", error);
+            setError(error.message || "OAuth 로그인에 실패했습니다.");
+        }
+    };
+
     return (
       <>
       <NavBar  />
@@ -46,7 +68,13 @@ export default function Login() {
                 />
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <button type="submit">로그인</button>
+                <br></br>
+                <button onClick={handleOAuthLogin} className="oauth-login-button">
+                Google로 로그인
+            </button>
             </form>
+
         </div>
-        </>);
+        </>
+    );
 }
