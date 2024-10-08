@@ -1,32 +1,84 @@
-import React from 'react';
-import '../CSS/login_signup.css'; 
-import NavBar from './navbar';
+// signup.jsx
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "./supabaseClient";
+import NavBar from './navbar'
+import '../CSS/login_signup.css'
 
-const Signup = () => {
-  return (
-    <>
-    <NavBar />
-    <div className="signup-container">
-      <h2>회원가입</h2><br></br>
-      <form className="signup-form">
-        <label htmlFor="name">이름</label>
-        <input type="text" id="name" placeholder="이름을 입력하세요" />
+export default function Signup() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-        <label htmlFor="email">이메일</label>
-        <input type="email" id="email" placeholder="이메일을 입력하세요" />
+    const handleSignup = async (e) => {
+        e.preventDefault();
 
-        <label htmlFor="password">비밀번호</label>
-        <input type="password" id="password" placeholder="비밀번호를 입력하세요" />
+        if (password !== confirmPassword) {
+            setError("비밀번호가 일치하지 않습니다.");
+            return;
+        }
 
-        <label htmlFor="confirm-password">비밀번호 확인</label>
-        <input type="password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요" />
-        <br></br>
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError("유효한 이메일 주소를 입력해 주세요.");
+            return;
+        }
 
-        <button type="submit">회원가입</button>
-      </form>
-    </div>
-    </>
-  );
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: { name }
+            }
+        });
+
+        if (error) {
+            setError(error.message || "회원가입 중 오류가 발생했습니다.");
+        } else {
+            alert("회원가입이 완료되었습니다.");
+            navigate("/login");
+        }
+    };
+
+    return (
+      <>
+      <NavBar  />
+        <div className="signup-container">
+            <form onSubmit={handleSignup} className="signup-form">
+                <label>이름</label>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+                <label>이메일</label>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <label>비밀번호</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <label>비밀번호 확인</label>
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                <button type="submit">회원가입</button>
+            </form>
+        </div></>
+    );
 }
-
-export default Signup;
