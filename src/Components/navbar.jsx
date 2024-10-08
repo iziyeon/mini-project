@@ -127,7 +127,7 @@ function NavBar() {
           {session ? (
             <>
               <img
-                src="/썸네일사진.png"
+                src="../../썸네일사진.png"
                 alt="썸네일"
                 className="user-thumbnail"
               />
