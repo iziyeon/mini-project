@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { supabase } from './supabaseClient';
 import '../CSS/navbar.css';
+import '../public/썸네일사진.png'
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -127,7 +128,7 @@ function NavBar() {
           {session ? (
             <>
               <img
-                src="../../썸네일사진.png"
+                src="../public/썸네일사진.png"
                 alt="썸네일"
                 className="user-thumbnail"
               />
